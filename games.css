@@ -1,0 +1,494 @@
+/* ===== GAME-SPECIFIC STYLES ===== */
+
+/* --- Game Page Layout --- */
+.game-page-wrapper {
+    background: var(--light-gray);
+    padding: 3rem 0;
+    min-height: 70vh;
+}
+body.dark-mode .game-page-wrapper {
+    background: var(--dark-bg);
+}
+
+.game-container {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    max-width: 700px; /* <-- CHANGED THIS LINE */
+    margin: 0 auto;
+}
+body.dark-mode .game-container {
+    background: var(--dark-bg-secondary);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.game-header h3 {
+    font-size: 2rem;
+    color: var(--primary-blue);
+}
+.game-header p {
+    font-size: 1.1rem;
+    color: var(--light-text);
+}
+body.dark-mode .game-header h3 {
+    color: var(--dark-accent);
+}
+.game-score-container {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+body.dark-mode .game-score-container {
+    color: var(--dark-text-primary);
+}
+
+.game-btn {
+    padding: 0.8rem 1.8rem; /* <-- INCREASED PADDING */
+    background-color: var(--primary-green);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem; /* <-- INCREASED FONT SIZE */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.game-btn:hover {
+    background-color: #106c07;
+}
+
+/* --- Game 1: File Catcher --- */
+#catcher-game-area {
+    position: relative;
+    width: 100%;
+    height: 400px; /* <-- CHANGED THIS LINE */
+    background: var(--light-gray);
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* This is crucial */
+}
+
+.catcher-instructions {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--light-text);
+    margin-top: 40%;
+}
+
+#catcher-player {
+    position: absolute;
+    bottom: 10px;
+    width: 60px;
+    height: 40px;
+    font-size: 3rem;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.catcher-item {
+    position: absolute;
+    top: -40px; /* Start above the screen */
+    width: 40px;
+    height: 40px;
+    font-size: 2.5rem;
+    text-align: center;
+}
+.item-good {
+    color: var(--primary-green);
+}
+.item-bad {
+    color: #E74C3C; /* Red */
+}
+
+/* --- Dark Mode for File Catcher --- */
+body.dark-mode #catcher-game-area {
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+}
+body.dark-mode .catcher-instructions {
+    color: var(--dark-text-secondary);
+}
+body.dark-mode #catcher-player {
+    color: var(--dark-accent);
+}
+/* --- Game 2: The Honest Official --- */
+/* --- Game 2: Stamp or Shred --- */
+#bribe-game-desk {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background: var(--light-gray);
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bribe-instructions {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--light-text);
+    padding: 2rem;
+}
+
+#bribe-file-area {
+    position: relative;
+    width: 280px; /* Slightly wider */
+    height: 180px; /* Slightly taller */
+    background: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Stack icon and text */
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+#bribe-file-area i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* New file styles */
+.file-valid {
+    border: 4px solid var(--primary-green);
+    color: var(--primary-green);
+}
+.file-invalid {
+    border: 4px solid #E74C3C;
+    color: #E74C3C;
+}
+.file-bribe {
+    border: 4px solid var(--primary-saffron);
+    color: #a16422;
+}
+
+#bribe-action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.bribe-action-btn {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.bribe-action-btn i {
+    margin-right: 0.5rem;
+}
+.bribe-action-btn.shred { /* Renamed */
+    background-color: #E74C3C;
+    color: white;
+}
+.bribe-action-btn.stamp { /* Renamed */
+    background-color: var(--primary-green);
+    color: white;
+}
+.bribe-action-btn:hover {
+    transform: scale(1.03);
+}
+.bribe-action-btn:active {
+    transform: scale(0.98);
+}
+.bribe-action-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* --- Dark Mode for Stamp or Shred --- */
+body.dark-mode #bribe-game-desk {
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+}
+body.dark-mode .bribe-instructions {
+    color: var(--dark-text-secondary);
+}
+body.dark-mode #bribe-file-area {
+    background: var(--dark-bg-secondary);
+    box-shadow: 0 4px 15px var(--dark-shadow);
+}
+body.dark-mode .file-valid {
+    color: var(--primary-green);
+}
+body.dark-mode .file-invalid {
+    color: #E74C3C;
+}
+body.dark-mode .file-bribe {
+    border-color: var(--primary-saffron);
+    color: var(--primary-saffron);
+}
+/* --- Game 3: Quiz --- */
+.quiz-container {
+    text-align: center;
+}
+#quiz-question {
+    font-size: 1.5rem;
+    color: var(--dark-text);
+    margin-bottom: 2rem;
+}
+body.dark-mode #quiz-question {
+    color: var(--dark-text-primary);
+}
+.quiz-answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.quiz-answer-btn {
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid #ddd;
+    background: var(--white);
+    color: var(--dark-text);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+body.dark-mode .quiz-answer-btn {
+    border: 2px solid var(--dark-border);
+}
+.quiz-answer-btn:hover {
+    border-color: var(--primary-blue);
+    background: var(--light-gray);
+}
+body.dark-mode .quiz-answer-btn:hover {
+    border-color: var(--dark-accent);
+    background: var(--dark-bg);
+}
+.quiz-answer-btn.correct {
+    background: var(--primary-green);
+    color: #FFFFFF;
+    border-color: var(--primary-green);
+}
+.quiz-answer-btn.incorrect {
+    background: #E74C3C;
+    color: #FFFFFF;
+    border-color: #E74C3C;
+}
+.quiz-answer-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+#next-quiz-btn {
+    margin-top: 2rem;
+}
+
+/* ===== DARK MODE FOR GAME PAGES ===== */
+
+/* --- Game Page Layout (Dark) --- */
+body.dark-mode .game-page-wrapper {
+    background: var(--dark-bg);
+}
+body.dark-mode .game-container {
+    background: var(--dark-bg-secondary);
+}
+body.dark-mode .game-header h3 {
+    color: var(--dark-accent);
+}
+body.dark-mode .game-header p {
+    color: var(--dark-text-secondary);
+}
+body.dark-mode .game-score-container {
+    color: var(--dark-text-primary);
+}
+
+/* --- Game 1: Memory Match (Dark) --- */
+body.dark-mode .memory-card {
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+}
+body.dark-mode .memory-card .card-front {
+    color: var(--dark-accent);
+}
+body.dark-mode .memory-card .card-back {
+    background: var(--dark-accent);
+    color: var(--dark-bg);
+}
+
+/* --- Game 2: Whack-a-Mole (Dark) --- */
+body.dark-mode .whack-hole {
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+}
+body.dark-mode .whack-hole.up-bribe {
+    background: #5a1e17; /* Darker red */
+    color: #f5c6cb;
+}
+body.dark-mode .whack-hole.up-good {
+    background: #1a4a2c; /* Darker green */
+    color: #d1e7dd;
+}
+
+/* --- Game 3: Quiz --- */
+.quiz-container {
+    text-align: left;
+}
+#quiz-game-view, #quiz-results-view {
+    width: 100%;
+}
+#quiz-progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #eee;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+#quiz-progress-fill {
+    height: 100%;
+    width: 20%; /* Will be updated by JS */
+    background-color: var(--primary-green);
+    border-radius: 15px;
+    transition: width 0.3s ease;
+}
+#quiz-progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+#quiz-question {
+    font-size: 1.5rem;
+    color: var(--dark-text);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.quiz-answers {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .quiz-answers {
+        grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
+    }
+}
+@media (min-width: 768px) {
+    .quiz-answers {
+        grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+    }
+}
+.quiz-answer-btn {
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid #ddd;
+    background: var(--white);
+    color: var(--dark-text);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+.quiz-answer-btn:hover:not(:disabled) {
+    border-color: var(--primary-blue);
+    background: var(--light-gray);
+}
+.quiz-answer-btn.correct {
+    background: var(--primary-green);
+    color: #FFFFFF;
+    border-color: var(--primary-green);
+}
+.quiz-answer-btn.incorrect {
+    background: #E74C3C;
+    color: #FFFFFF;
+    border-color: #E74C3C;
+}
+.quiz-answer-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* --- Quiz Results --- */
+.quiz-final-score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    text-align: center;
+    display: block;
+    margin: 1rem 0 2rem 0;
+}
+#quiz-results-summary {
+    border-top: 2px solid #eee;
+    padding-top: 1rem;
+}
+.result-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+.result-item p {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+.result-item span {
+    font-size: 1rem;
+    font-weight: 400;
+}
+.result-item.correct p {
+    color: var(--primary-green);
+}
+.result-item.incorrect p {
+    color: #E74C3C;
+}
+#restart-quiz-btn {
+    margin-top: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Dark Mode for Quiz --- */
+body.dark-mode #quiz-progress-bar {
+    background-color: var(--dark-bg);
+}
+body.dark-mode #quiz-progress-text {
+    color: var(--dark-text-primary);
+}
+body.dark-mode #quiz-question {
+    color: var(--dark-text-primary);
+}
+body.dark-mode .quiz-answer-btn {
+    border: 2px solid var(--dark-border);
+    background: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+}
+body.dark-mode .quiz-answer-btn:hover:not(:disabled) {
+    border-color: var(--dark-accent);
+    background: var(--dark-bg);
+}
+body.dark-mode .quiz-final-score {
+    color: var(--dark-text-primary);
+}
+body.dark-mode #quiz-results-summary {
+    border-top-color: var(--dark-border);
+}
+.result-item {
+    border-bottom-color: var(--dark-border);
+}
+body.dark-mode .result-item span {
+    color: var(--dark-text-secondary);
+}

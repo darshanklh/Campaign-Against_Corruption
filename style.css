@@ -1,0 +1,1839 @@
+/* ===== GLOBAL STYLES & VARIABLES ===== */
+:root {
+    --primary-saffron: #FF9933;
+    --primary-green: #138808;
+    --primary-blue: #000080;
+    --white: #FFFFFF;
+    --light-gray: #f7f9fc;
+    --dark-text: #333;
+    --light-text: #555;
+    --font-family: 'Montserrat', sans-serif;
+    --primary-blue: #000080;
+    --white: #FFFFFF;
+    
+    /* ADD THESE */
+    --dark-bg: #0b0f22; /* Very dark navy blue */
+    --dark-bg-secondary: #191e3a; /* Lighter dark shade for cards */
+    --dark-text-primary: #f0f0f0; /* Main text color */
+    --dark-text-secondary: #a0a2b0; /* Lighter text for details */
+    --dark-border: #2a3052;
+    --dark-shadow: rgba(0, 0, 0, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-blue);
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+header {
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+nav.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-blue);
+    display: flex; /* <-- ADD THIS */
+    align-items: center; /* <-- ADD THIS */
+}
+
+.logo i {
+    color: var(--primary-saffron);
+    margin-right: 0.5rem; /* <-- ADD THIS to create space */
+}
+
+/* REPLACE all styles from .nav-links down to .nav-cta:hover with this */
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 1rem; /* <-- REDUCED THIS */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 700;
+    /* ADDED PADDING AND BORDER-RADIUS */
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    /* ADDED BACKGROUND-COLOR TO THE TRANSITION */
+    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    font-size: 0.95rem;
+    background-color: transparent; /* Make sure it's transparent by default */
+}
+
+.nav-links a:hover {
+    color: var(--primary-saffron);
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.05); /* This is the "transparent button" */
+}
+
+/* This is the main "Pledge" button */
+.nav-cta {
+    background: var(--primary-green);
+    color: var(--white) !important;
+    padding: 0.6rem 1.1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s ease;
+    white-space: nowrap; /* Prevents button text from wrapping */
+    margin-left: 1.8rem;
+}
+
+.nav-cta:hover {
+    background: #106c07;
+    color: var(--white) !important;
+}
+
+/* Hamburger Menu Button */
+.hamburger-btn {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    cursor: pointer;
+    z-index: 1001; /* Above sidebar */
+    margin-left: 1rem;
+}
+
+.hamburger-btn .fa-xmark {
+    display: none; /* Hide 'X' icon by default */
+}
+
+/* This class will be toggled by JS */
+.hamburger-btn.active .fa-bars {
+    display: none; /* Hide 'bars' when active */
+}
+.hamburger-btn.active .fa-xmark {
+    display: block; /* Show 'X' when active */
+}
+/* ===== HERO SECTION ===== */
+.hero {
+    height: 90vh;
+    
+    /* Separated background properties */
+    background-color: #fff; /* Base color for light mode */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                      url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Start the Chakra 10% lower than center */
+    background-position: center 60%; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* Add the new animation */
+    animation: floatChakraBg 1s ease-out 0.1s forwards;
+}
+
+.hero-content h1 {
+    font-size: 4rem; /* LOUD MESSAGE */
+    font-weight: 900;
+    color: var(--primary-blue);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: -2px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--light-text);
+    margin: 1rem 0 2rem 0;
+}
+
+/* ===== CALL TO ACTION BUTTONS ===== */
+.cta-button {
+    background: var(--primary-saffron);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background: #e68a2e;
+    transform: translateY(-3px) scale(1.05); /* <-- EDITED */
+    box-shadow: 0 5px 15px rgba(255, 153, 51, 0.4);
+}
+
+.cta-button-outline {
+    background: transparent;
+    color: var(--primary-blue);
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 50px;
+    border: 2px solid var(--primary-blue);
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+}
+
+.cta-button-outline:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+/* ===== MISSION SECTION ===== */
+.mission-section {
+    padding: 5rem 0;
+}
+
+.card-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    text-align: center;
+    flex: 1;
+}
+
+.card i {
+    font-size: 3rem;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-blue);
+}
+
+/* ===== ACTION SECTION ===== */
+.action-section {
+    background: var(--light-gray);
+    padding: 5rem 0;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.action-item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.action-item i {
+    font-size: 2.5rem;
+    color: var(--primary-saffron);
+}
+
+.action-item h4 {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.2rem;
+}
+
+/* ===== PLEDGE SECTION ===== */
+/* ===== PLEDGE SECTION ===== */
+.pledge-section {
+    background: linear-gradient(to right, var(--primary-green), #106c07); /* Changed to green gradient */
+    color: var(--white);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.pledge-section h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.pledge-counter-container {
+    margin: 2rem 0;
+}
+
+#pledge-counter {
+    font-size: 4rem;
+    font-weight: 900;
+    display: block;
+}
+
+/* This is the button INSIDE the pledge section */
+.pledge-section .cta-button {
+    background: var(--white); /* Keep the button white */
+    color: var(--primary-green); /* Make button text green */
+}
+
+.pledge-section .cta-button:hover {
+    background: var(--light-gray);
+    color: var(--primary-green); /* Keep button text green on hover */
+}
+
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* --- DARK MODE ADJUSTMENTS FOR PLEDGE SECTION --- */
+body.dark-mode .pledge-section {
+    background: linear-gradient(to right, var(--primary-green), #106c07); /* Still green in dark mode */
+    color: var(--dark-text-primary); /* Use dark mode primary text color */
+}
+
+body.dark-mode .pledge-section h2,
+body.dark-mode .pledge-section p {
+    color: var(--dark-text-primary); /* Ensure all text is visible */
+}
+
+body.dark-mode .pledge-section .cta-button {
+    background: var(--dark-bg-secondary); /* Darker background for the button */
+    color: var(--dark-accent); /* Use the new dark mode accent color for button text */
+    border: 1px solid var(--dark-accent); /* Add a border for definition */
+}
+
+body.dark-mode .pledge-section .cta-button:hover {
+    background: var(--dark-accent); /* Hover background becomes the accent */
+    color: var(--dark-bg); /* Text becomes dark on accent hover */
+}
+
+/* ===== REPORT SECTION ===== */
+.report-section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.report-section p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 1rem auto 2rem auto;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+footer .fa-heart {
+    color: #FF9933;
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+    animation: slide-in 0.5s ease;
+}
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+}
+
+.modal-content h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.modal-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.modal-content li {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.modal-content li::before {
+    content: '\f00c'; /* Font Awesome check icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--primary-green);
+    position: absolute;
+    left: 0;
+}
+
+.modal-content .cta-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+@keyframes slide-in {
+    from {
+        top: -100px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+
+/* ===== RESPONSIVE DESIGN (Consolidated Fix) ===== */
+
+/* --- Tablet & Sidebar Breakpoint --- */
+@media (max-width: 1024px) {
+    
+    /* --- Sidebar Navigation --- */
+    .nav-links {
+        position: fixed;
+        top: 70px; /* Below the header */
+        right: -100%; /* Start off-screen */
+        width: 300px;
+        height: calc(100vh - 70px);
+        background: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.4s ease-in-out;
+        z-index: 1000;
+    }
+    .nav-links.active {
+        right: 0; /* Slide in */
+    }
+    .nav-links li {
+        margin: 1.2rem 0;
+        width: 100%;
+    }
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+    .hamburger-btn {
+        display: block; /* Show hamburger button */
+    }
+    li.mobile-only-link {
+        display: list-item; /* Show mobile-only links */
+    }
+
+    /* --- Stacking Grids --- */
+    .card-container,
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .action-grid,
+    .stories-container,
+    .news-grid,
+    .video-grid,
+    .stats-grid, /* Fixes sub-pages */
+    .form-group-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- Cleanup --- */
+    .form-group-grid {
+        gap: 0;
+    }
+    .footer-content {
+        text-align: center;
+    }
+    .footer-left, .footer-right {
+        flex-basis: 100%;
+        margin-bottom: 2rem;
+    }
+    .footer-left p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .social-links {
+        text-align: center;
+    }
+}
+
+/* --- Mobile Font & Sizing --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+        letter-spacing: -1px;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .article-title {
+        font-size: 2rem;
+    }
+    .article-content {
+        padding: 1.5rem;
+    }
+
+    /* --- ADD THESE NEW RULES --- */
+    .news-content,
+    .video-card h3,
+    .video-card p {
+        padding: 1rem; /* Reduce padding from 1.5rem */
+    }
+    
+    .news-title,
+    .video-card h3 {
+        font-size: 1.1rem; /* Make titles smaller */
+    }
+    
+    .news-content p,
+    .video-card p {
+        font-size: 0.85rem; /* Make text smaller */
+        padding-top: 0;
+    }
+    /* --- END OF NEW RULES --- */
+}
+/* --- UNIFIED CARD SIZING FOR MOBILE --- */
+    
+    /* 1. Unify padding for all card content areas */
+    .news-content,
+    .video-card { /* This styles News, Video, AND Game cards */
+        padding: 1rem; /* Set uniform padding */
+    }
+
+    /* 2. Unify title styles */
+    .news-title,
+    .video-card h3 { /* Targets News, Video, AND Game titles */
+        font-size: 1.1rem; /* Set uniform font size */
+        padding: 0; /* Remove extra padding */
+        margin-bottom: 0.5rem;
+    }
+    
+    /* 3. Unify text styles */
+    .news-content p,
+    .video-card p { /* Targets News, Video, AND Game text */
+        font-size: 0.85rem; /* Set uniform font size */
+        padding: 0; /* Remove extra padding */
+        margin-bottom: 0;
+    }
+    /* --- END OF UNIFIED SIZING --- */
+
+/* --- Small Mobile Cleanup --- */
+@media (max-width: 480px) {
+    .nav-cta {
+        display: none; /* Hide pledge button */
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    /* ADD THIS NEW RULE */
+    .report-section .cta-button-outline {
+        display: block; /* Makes them stack */
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        max-width: 300px; /* Prevents them from being too wide */
+    }
+}
+
+/* ===== NEWS SECTION ===== */
+.news-section {
+    padding: 5rem 0;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.news-card {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    overflow: hidden; /* Ensures image corners are rounded */
+    display: flex;
+    flex-direction: column;
+}
+
+.news-image {
+    width: 80%;
+    aspect-ratio: 11 / 7; /* <-- THIS IS THE FIX */
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+}
+
+.news-title {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.news-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.read-more {
+    text-decoration: none;
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.read-more i {
+    margin-left: 4px;
+    transition: margin-left 0.3s ease;
+}
+
+.read-more:hover i {
+    margin-left: 8px;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+    background: var(--light-gray);
+    padding: 5rem 0;
+}
+
+.contact-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--light-text);
+    margin-top: -3rem;
+    margin-bottom: 3rem;
+}
+
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-group-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-blue);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* ADD this rule to make space for the icons */
+.input-wrapper input {
+    padding-left: 45px; 
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-saffron);
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resize, not horizontal */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.submit-btn {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.form-status {
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+/* --- Responsive Adjustments for New Sections --- */
+@media (max-width: 992px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-group-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* ===== TESTIMONIALS / STORIES SECTION ===== */
+.stories-section {
+    background: var(--light-gray);
+    padding: 5rem 0;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--light-text);
+    margin-top: -3rem;
+    margin-bottom: 3rem;
+}
+
+.stories-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.story-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    border-left: 5px solid var(--primary-saffron);
+}
+
+.story-card p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+}
+
+.story-card p::before {
+    content: '\f10d'; /* Font Awesome left-quote */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--primary-saffron);
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.story-card cite {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--primary-green);
+}
+
+/* ===== FAQ SECTION ===== */
+.faq-section {
+    padding: 5rem 0;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--white);
+    border: 2px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden; /* Ensures smooth opening */
+}
+
+.faq-item[open] summary {
+    border-bottom: 2px solid #eee;
+    background: var(--light-gray);
+}
+
+.faq-item summary {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    cursor: pointer;
+    list-style: none; /* Removes default triangle */
+    position: relative;
+    user-select: none; /* Prevents text selection on click */
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none; /* Hides default marker for Chrome/Safari */
+}
+
+.faq-item summary::after {
+    /* Custom 'plus' icon */
+    content: '\f067'; /* Font Awesome plus */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-saffron);
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    /* 'plus' becomes 'minus' */
+    content: '\f068'; /* Font Awesome minus */
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.faq-item p {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+    background: var(--white);
+    color: var(--light-text);
+    line-height: 1.7;
+}
+
+/* ===== FOOTER UPGRADES ===== */
+footer {
+    background: var(--primary-blue);
+    color: #e0e0e0; /* Lighter text for footer */
+    padding-top: 3rem; /* More padding */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #1a1a9c;
+}
+
+.footer-left {
+    flex-basis: 50%;
+}
+
+.footer-left .logo {
+    color: var(--white);
+    font-size: 1.8rem;
+}
+
+.footer-left p {
+    margin-top: 0.5rem;
+    color: #ccc;
+    max-width: 300px;
+}
+
+.footer-right {
+    flex-basis: 40%;
+    text-align: left;
+}
+
+.footer-right h4 {
+    font-size: 1.2rem;
+    color: #FFFFFF; /* <-- This is the fix */
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: #FFFFFF; /* <-- This is the fix */
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var_(--primary-saffron);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.footer-bottom .fa-heart {
+    color: var(--primary-saffron);
+}
+
+
+/* --- Responsive Adjustments for New Sections --- */
+@media (max-width: 992px) {
+    .stories-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-left, .footer-right {
+        flex-basis: 100%;
+        margin-bottom: 2rem;
+    }
+    .footer-left p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .social-links {
+        text-align: center;
+    }
+}
+/* ADD THIS to the very end of your style.css file */
+
+/* ===== RESPONSIVE NAVBAR ===== */
+@media (max-width: 1024px) {
+    /* At this width, hide the links and show the hamburger */
+    
+    .nav-links {
+        /* This turns the nav into the sidebar */
+        position: fixed;
+        top: 70px; /* Below the header */
+        right: -100%; /* Start off-screen to the right */
+        width: 300px;
+        height: calc(100vh - 70px);
+        background: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.4s ease-in-out;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0; /* Slide in */
+    }
+
+    .nav-links li {
+        margin: 1.2rem 0;
+        width: 100%;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+
+    .hamburger-btn {
+        display: block; /* Show hamburger button */
+    }
+}
+
+@media (max-width: 480px) {
+    /* On very small screens, hide the "Take the Pledge" button */
+    /* from the header to make more room for the logo */
+    .nav-cta {
+        display: none;
+    }
+}
+
+/* ADD THIS to the very end of your style.css file */
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--light-text);
+    color: var(--light-text);
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 1.8rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--light-gray);
+    color: var(--dark-text);
+}
+
+.theme-toggle .fa-sun {
+    display: none; /* Hide sun by default */
+}
+
+/* ===== DARK MODE STYLES ===== */
+body.dark-mode {
+    /* Redefine variables for dark mode */
+    --white: var(--dark-bg);
+    --light-gray: var(--dark-bg-secondary);
+    --dark-text: var(--dark-text-primary);
+    --light-text: var(--dark-text-secondary);
+
+    /* Helps browser elements like scrollbars */
+    color-scheme: dark;
+    background-color: var(--dark-bg);
+}
+
+/* --- Theme Toggle Button (Dark) --- */
+body.dark-mode .theme-toggle {
+    border-color: var(--primary-saffron);
+    color: var(--primary-saffron);
+}
+body.dark-mode .theme-toggle:hover {
+    background: var(--dark-border);
+}
+body.dark-mode .theme-toggle .fa-sun {
+    display: inline-block; /* Show sun in dark mode */
+}
+body.dark-mode .theme-toggle .fa-moon {
+    display: none; /* Hide moon in dark mode */
+}
+
+/* --- General Elements (Dark) --- */
+body.dark-mode header,
+body.dark-mode .nav-links {
+    background: var(--dark-bg); /* Use main dark for header */
+    box-shadow: 0 2px 10px var(--dark-shadow);
+}
+body.dark-mode .logo,
+body.dark-mode .nav-links a,
+body.dark-mode .hamburger-btn {
+    color: var(--dark-text-primary);
+}
+body.dark-mode .nav-links a:hover {
+    color: var(--dark-accent);
+    /* This is the "transparent button" for dark mode */
+    background-color: rgba(64, 207, 255, 0.1); 
+}
+
+/* --- Hero (Dark) --- */
+/* FIND and EDIT this rule */
+body.dark-mode .hero {
+    /* Separated background properties for dark mode */
+    background-color: var(--dark-bg);
+    background-image: linear-gradient(rgba(11, 15, 34, 0.65), rgba(11, 15, 34, 0.65)), 
+                      url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png');
+    /* This rule is inherited, so it will also start at 60% and animate */
+}
+/* FIND and EDIT this rule */
+body.dark-mode .hero-content h1 {
+    color: var(--dark-text-primary); /* This fixes the invisible text */
+}
+
+/* --- Cards & Sections (Dark) --- */
+body.dark-mode .card,
+body.dark-mode .action-item,
+body.dark-mode .story-card,
+body.dark-mode .news-card,
+body.dark-mode .contact-form,
+body.dark-mode .faq-item,
+body.dark-mode .modal-content {
+    background: var(--dark-bg-secondary);
+    box-shadow: 0 4px 20px var(--dark-shadow);
+    border: 1px solid var(--dark-border);
+}
+body.dark-mode .story-card {
+    border-left-color: var(--primary-saffron);
+}
+body.dark-mode .section-title,
+body.dark-mode .card h3,
+body.dark-mode .action-item h4,
+body.dark-mode .news-title,
+body.dark-mode .faq-item summary,
+body.dark-mode .modal-content h3,
+body.dark-mode .contact-form label,
+body.dark-mode .report-section h2 {
+    color: var(--primary-saffron); /* Use accent for titles */
+}
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+}
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: var(--primary-saffron);
+}
+
+/* --- Responsive (Dark) --- */
+@media (max-width: 1024px) {
+    body.dark-mode .nav-links {
+        background: var(--dark-bg-secondary); /* Sidebar menu bg */
+        box-shadow: -5px 0 15px var(--dark-shadow);
+    }
+}
+@media (max-width: 480px) {
+    .theme-toggle {
+        margin-left: 0.5rem; /* Reduce margin on small screens */
+    }
+}
+
+/* ADD THIS to your dark mode styles at the end of style.css */
+
+/* --- Report Buttons (Dark) --- */
+body.dark-mode .cta-button-outline {
+    color: var(--primary-saffron);
+    border-color: var(--primary-saffron);
+}
+
+body.dark-mode .cta-button-outline:hover {
+    background: var(--primary-saffron);
+    color: var(--dark-bg); /* Use dark text on saffron bg for contrast */
+}
+
+/* --- Social Media Brand Colors (Footer) --- */
+.social-links a[title="Twitter"] {
+    color: #1DA1F2; /* Twitter Blue */
+}
+.social-links a[title="Facebook"] {
+    color: #1877F2; /* Facebook Blue */
+}
+.social-links a[title="Instagram"] {
+    /* Using Instagram's primary pink */
+    color: #E4405F; 
+}
+.social-links a[title="YouTube"] {
+    color: #FF0000; /* YouTube Red */
+}
+
+/* This rule ensures your saffron hover effect still works */
+.social-links a[title]:hover {
+    color: var(--primary-saffron);
+}
+
+/* ===== DARK MODE ACCENT COLOR OVERRIDE (BLUE) ===== */
+/* This replaces the "irritating" orange in dark mode */
+
+body.dark-mode {
+    --dark-accent: #40CFFF; /* The new accent color */
+}
+
+/* --- Override Saffron Text & Icons --- */
+body.dark-mode .logo i,
+body.dark-mode .theme-toggle,
+body.dark-mode .cta-button-outline,
+body.dark-mode .section-title,
+body.dark-mode .card h3,
+body.dark-mode .action-item h4,
+body.dark-mode .news-title,
+body.dark-mode .faq-item summary,
+body.dark-mode .modal-content h3,
+body.dark-mode .contact-form label,
+body.dark-mode .report-section h2,
+body.dark-mode .faq-item summary::after,
+body.dark-mode .footer-bottom .fa-heart {
+    color: var(--dark-accent);
+}
+
+/* --- Override Saffron Borders --- */
+body.dark-mode .theme-toggle,
+body.dark-mode .cta-button-outline,
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: var(--dark-accent);
+}
+
+body.dark-mode .story-card {
+    border-left-color: var(--dark-accent);
+}
+
+/* --- Override Saffron Hovers --- */
+body.dark-mode .nav-links a:hover,
+body.dark-mode .social-links a[title]:hover {
+    color: var(--dark-accent);
+}
+
+body.dark-mode .cta-button-outline:hover {
+    background: var(--dark-accent);
+    color: var(--dark-bg); /* Keep text dark for contrast */
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: var(--dark-border);
+    color: var(--dark-accent);
+}
+
+/* ===== GLOBAL HOVER & ANIMATION EFFECTS ===== */
+
+/* --- 1. Target all 'card' elements --- */
+/* This adds the transition property to the base state */
+.card,
+.action-item,
+.story-card,
+.news-card,
+.faq-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* This adds the 'zoom' and shadow on hover */
+.card:hover,
+.action-item:hover,
+.story-card:hover,
+.news-card:hover,
+.faq-item:hover {
+    transform: scale(1.03); /* A subtle 3% zoom */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 2. Target all 'button' and 'link' elements --- */
+/* This adds the transition property to the base state */
+.cta-button,
+.cta-button-outline,
+.nav-cta,
+.theme-toggle,
+.hamburger-btn,
+.read-more,
+.social-links a,
+.nav-links a {
+    /* Add 'transform' to the existing transition */
+    transition: all 0.3s ease;
+}
+
+/* This adds the 'zoom' on hover */
+.cta-button:hover,
+.cta-button-outline:hover,
+.nav-cta:hover,
+.theme-toggle:hover,
+.hamburger-btn:hover,
+.read-more:hover,
+.social-links a:hover {
+    transform: scale(1.05); /* A slightly larger 5% zoom for buttons */
+}
+
+/* Specific hover for nav links (less zoom) */
+.nav-links a:hover {
+    transform: scale(1.1);
+    /* We keep the color change from the existing hover rule */
+}
+
+
+/* --- 3. Dark Mode Adjustments --- */
+/* This ensures the hover shadow looks good in dark mode */
+body.dark-mode .card:hover,
+body.dark-mode .action-item:hover,
+body.dark-mode .story-card:hover,
+body.dark-mode .news-card:hover,
+body.dark-mode .faq-item:hover {
+    box-shadow: 0 10px 30px var(--dark-shadow);
+}
+
+/* --- ENHANCED FORM STYLES --- */
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text);
+    /* Animation for icon color */
+    transition: color 0.3s ease; 
+}
+
+/* ===== ARTICLE PAGE STYLES ===== */
+
+.article-page {
+    max-width: 900px; /* Narrower for better reading */
+    padding: 3rem 1rem;
+}
+
+.article-content {
+    background: var(--white);
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.article-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--primary-blue);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.article-meta {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    margin-bottom: 2rem;
+}
+
+.article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.article-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.article-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-text);
+    margin-bottom: 1.5rem;
+}
+
+/* --- Stats Section --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: var(--light-gray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    border-left: 5px solid var(--primary-green);
+}
+
+.stat-card h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-green);
+    margin: 0;
+}
+
+.stat-card p {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.back-link {
+    margin-top: 2rem;
+    display: inline-block;
+}
+.back-link i {
+    margin-right: 0.5rem;
+}
+
+/* --- Responsive for Article --- */
+@media (max-width: 768px) {
+    .article-title {
+        font-size: 2rem;
+    }
+    .article-content {
+        padding: 1.5rem;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Dark Mode for Article --- */
+body.dark-mode .article-content {
+    background: var(--dark-bg-secondary);
+    box-shadow: 0 4px 20px var(--dark-shadow);
+    border: 1px solid var(--dark-border);
+}
+body.dark-mode .article-title,
+body.dark-mode .article-content h2 {
+    color: var(--dark-accent); /* Use your blue accent */
+}
+body.dark-mode .stat-card {
+    background: var(--dark-bg);
+    border-left-color: var(--primary-green);
+}
+body.dark-mode .stat-card h3 {
+    color: var(--primary-green);
+}
+
+/* --- MISSION CARD LINK WRAPPER --- */
+.card-link-wrapper {
+    text-decoration: none;
+    color: inherit; /* Inherits the default text color */
+    display: flex; /* Ensures the card stretches to fill the space */
+}
+
+/* Fixes hover effect conflicts */
+.card-link-wrapper:hover .card {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .card-link-wrapper:hover .card {
+    box-shadow: 0 10px 30px var(--dark-shadow);
+}
+
+/* --- ACTION CARD LINK WRAPPER --- */
+.action-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+    display: flex; /* Ensures card stretches */
+}
+
+/* Fixes hover effect conflicts */
+.action-link-wrapper .action-item {
+    width: 100%; /* Make sure card fills the link */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.action-link-wrapper:hover .action-item {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .action-link-wrapper:hover .action-item {
+    box-shadow: 0 10px 30px var(--dark-shadow);
+}
+
+/* ===== VIDEO LIBRARY SECTION ===== */
+.video-section {
+    padding: 5rem 0;
+    background: var(--light-gray);
+}
+
+/* Re-using this style for the video section */
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--light-text);
+    margin-top: -3rem;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.video-card {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.video-embed-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+/* This now targets the div AND the iframe inside it */
+.video-embed-wrapper div[id^="player"],
+.video-embed-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    visibility: hidden; /* <-- HIDE IT BY DEFAULT */
+}
+
+.video-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+    font-weight: 700;
+}
+
+.video-card p {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    flex-grow: 1;
+}
+
+/* --- Responsive for Video Section --- */
+@media (max-width: 992px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Dark Mode for Video Section --- */
+body.dark-mode .video-section {
+    background: var(--dark-bg);
+}
+
+body.dark-mode .video-card {
+    background: var(--dark-bg-secondary);
+    box-shadow: 0 4px 20px var(--dark-shadow);
+    border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .video-card h3 {
+    color: var(--dark-accent);
+}
+
+
+/* ===== MOBILE-ONLY SIDEBAR LINK ===== */
+
+/* 1. Hide the link by default (on desktop) */
+/* 1. Hide the link by default (on desktop) */
+li.mobile-only-link {  /* <-- Targeting the <li> is more robust */
+    display: none;
+}
+
+/* 2. Show the link ONLY inside the media query... */
+@media (max-width: 1024px) {
+    li.mobile-only-link {
+        display: list-item; /* <-- Use 'list-item' to respect the <ul> */
+    }
+}
+
+/* --- CUSTOM VIDEO THUMBNAIL STYLES --- */
+
+.video-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures your image covers the area */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.video-play-btn i {
+    margin-left: 4px; /* Fixes centering of the play icon */
+}
+
+.video-card:hover .video-play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: rgba(64, 207, 255, 0.8); /* Use your blue accent on hover */
+    border-color: rgba(64, 207, 255, 0.8);
+}
+
+.video-card:hover .video-thumbnail {
+    transform: scale(1.05);
+}
+
+
+/* --- HELPER CLASSES (Used by JS) --- */
+
+/* This class gets added by JS when playing */
+.video-embed-wrapper.video-is-playing .video-thumbnail,
+.video-embed-wrapper.video-is-playing .video-play-btn {
+    /* Hide the thumbnail and play button */
+    visibility: hidden;
+    opacity: 0;
+}
+
+.video-embed-wrapper.video-is-playing div[id^="player"] {
+    /* Show the player */
+    visibility: visible;
+}
+/* ADD THIS NEW RULE: 
+   This makes the player visible when the class is added.
+*/
+.video-embed-wrapper.video-is-playing div[id^="player"],
+.video-embed-wrapper.video-is-playing iframe {
+    visibility: visible;
+}
+
+/* ===== GAME SECTION ===== */
+
+/* ===== GAME SECTION (Homepage Cards) ===== */
+.game-section {
+    padding: 5rem 0;
+    background-color: var(--primary-blue); 
+}
+
+.game-section .section-title,
+.game-section .section-subtitle {
+    color: #FFFFFF;
+}
+
+body.dark-mode .game-section {
+    background: var(--dark-bg);
+}
+
+/* This makes the new card links work */
+.game-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+}
+.game-card-link .video-card {
+    width: 100%;
+}
+body:not(.dark-mode) .quiz-answer-btn {
+    border-color: #ddd;
+}
+.quiz-answer-btn:hover {
+    border-color: var(--dark-accent);
+    background: var(--dark-bg-secondary);
+}
+body:not(.dark-mode) .quiz-answer-btn:hover {
+    border-color: var(--primary-blue);
+    background: var(--light-gray);
+}
+.quiz-answer-btn.correct {
+    background: var(--primary-green);
+    color: #FFFFFF;
+    border-color: var(--primary-green);
+}
+.quiz-answer-btn.incorrect {
+    background: #E74C3C;
+    color: #FFFFFF;
+    border-color: #E74C3C;
+}
+.quiz-answer-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+#next-quiz-btn {
+    margin-top: 2rem;
+}
+
+/* ===== GAME SECTION (Homepage Cards) ===== */
+.game-section {
+    padding: 5rem 0;
+    background-color: var(--primary-blue); /* This is the blue background */
+}
+
+.game-section .section-title,
+.game-section .section-subtitle {
+    color: #FFFFFF; /* Makes text white on the blue background */
+}
+
+/* This is the dark mode feature */
+body.dark-mode .game-section {
+    background: var(--dark-bg); /* Changes background to dark */
+}
+
+/* This makes the new card links work */
+.game-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+}
+.game-card-link .video-card {
+    width: 100%;
+}
+
+/* ===== HERO SECTION ON-LOAD ANIMATIONS ===== */
+
+/* 1. Define the "float up" animation */
+@keyframes floatUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Apply the animation to the heading */
+.hero-content h1 {
+    opacity: 0; /* Start invisible */
+    /* animation: [name] [duration] [timing] [delay] [fill-mode] */
+    animation: floatUp 0.8s ease-out 0.2s forwards;
+}
+
+/* 3. Apply the animation to the subtitle (delayed) */
+.hero-content .hero-subtitle {
+    opacity: 0; /* Start invisible */
+    animation: floatUp 0.8s ease-out 0.5s forwards;
+}
+
+/* 4. Apply the animation to the button (more delayed) */
+.hero .cta-button {
+    opacity: 0; /* Start invisible */
+    animation: floatUp 0.8s ease-out 0.8s forwards;
+}
+
+/* ===== HERO SECTION ON-LOAD ANIMATIONS ===== */
+
+/* 1. Define the "float up" animation for text */
+@keyframes floatUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. NEW: Define the "float up" animation for the background */
+@keyframes floatChakraBg {
+    from {
+        background-position: center 60%; /* Start lower */
+    }
+    to {
+        background-position: center center; /* Settle at center */
+    }
+}
+
+/* 3. Apply the animation to the heading (delay it) */
+.hero-content h1 {
+    opacity: 0; /* Start invisible */
+    /* animation: [name] [duration] [timing] [delay] [fill-mode] */
+    animation: floatUp 0.8s ease-out 0.5s forwards; /* Delayed to 0.5s */
+}
+
+/* 4. Apply the animation to the subtitle (more delayed) */
+.hero-content .hero-subtitle {
+    opacity: 0; /* Start invisible */
+    animation: floatUp 0.8s ease-out 0.8s forwards; /* Delayed to 0.8s */
+}
+
+/* 5. Apply the animation to the button (most delayed) */
+.hero .cta-button {
+    opacity: 0; /* Start invisible */
+    animation: floatUp 0.8s ease-out 1.1s forwards; /* Delayed to 1.1s */
+}
