@@ -646,8 +646,8 @@ footer .fa-heart {
 }
 
 .news-image {
-    width: 80%;
-    aspect-ratio: 11 / 7; /* <-- THIS IS THE FIX */
+    width: 100%;
+    aspect-ratio: 16 / 9; /* <-- THIS IS THE FIX */
     object-fit: cover;
 }
 
